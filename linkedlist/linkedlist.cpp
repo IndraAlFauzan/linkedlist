@@ -20,6 +20,8 @@ void addNode() {
 	nodeBaru->noMhs = nim;
 	nodeBaru->name = nama;
 
+	//inserting Beginning of the list
+
 	if (START == NULL || nim <= START->noMhs) {
 		if (START != NULL && nim == START->noMhs)
 		{
@@ -27,27 +29,30 @@ void addNode() {
 			return;
 		}
 
-		nodeBaru->next = START;
-		START = nodeBaru;
+		nodeBaru->next = START; // step 3
+		START = nodeBaru; // step 4
 		return;
 	}
 
-	Node* previous = START;
-	Node* current = START;
 
-	while ((current != NULL) && (nim >= current->noMhs))
+	//inserting in the first
+	Node* previous = START; // step 1
+	Node* current = START; // step 2
+
+	while ((current != NULL) && (nim >= current->noMhs)) //step 3
 	{
 		if (nim == current->noMhs)
 		{
 			cout << "NIM sudah ada" << endl;
 			return;
 		}
-		previous = current;
-		current = current->next;
+		previous = current; // step 4
+		current = current->next; // step 5 
 	}
 
-	nodeBaru->next = current;
-	previous->next = nodeBaru;
+	//insert node beetween two node
+	nodeBaru->next = current; //step 4
+	previous->next = nodeBaru; // step 5
 }
 
 bool serachNode(int nim, Node* current, Node* previous) {
